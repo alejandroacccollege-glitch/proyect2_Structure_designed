@@ -1,4 +1,6 @@
+#include <stdlib.h>
 #include "functions.h"
+// Funciones que pueden ser usadas pora otras partes del proyecto (Para el archivo proyect2.c)
 
 void push(Stack stack, char symbol) {
     
@@ -8,7 +10,7 @@ void push(Stack stack, char symbol) {
     newNode->prior = stack->top;
     stack->top = newNode;
     stack->size++;
-}
+} // Se encarga de agregar datos al stack
 
 char pop(Stack stack) {
     if (stack->top == NULL) {
@@ -23,4 +25,4 @@ char pop(Stack stack) {
     stack->size--;                 
 
     return value;   
-}
+} //Se encarga de devolver datos almacenados en el stack

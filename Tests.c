@@ -7,7 +7,7 @@ int main()
         printf("True\n");
     } else {
         printf("False\n");
-    }
+    } // Se prueba el ejercicio 3 con el archivo dado
     
     return 0;
 }
