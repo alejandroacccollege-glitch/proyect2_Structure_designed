@@ -3,6 +3,9 @@
 
 int main()
 {
+    //Ejercicio 1
+    
+    //Ejercicio 3
     if (isBalanced("TestFileExercise3.txt") == True) {
         printf("True\n");
     } else {

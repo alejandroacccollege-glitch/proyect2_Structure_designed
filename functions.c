@@ -5,9 +5,8 @@
 /*Ejercicio 2 Implementación */
 //Crear la esstructura strStack 
 struct strChack {
-    int capacity = 0;
-    char array[capacity];
-    char *arrayPonier = array;  // Apuntador al arreglo dinámico que almacena los elementos del stack
+    int capacity;
+    char *arrayPonier;  // Apuntador al arreglo dinámico que almacena los elementos del stack
     int top;        // Índice del elemento superior del stack   // Capacidad máxima del stack
     //El tamaño logico de la pila N, tal que siempre cumple N<=C
 };
@@ -24,13 +23,13 @@ chack_create(int capacity) {
 //Metodo push, se implementa con realloc , ya que no tiene una estructura 
 //Autoreferencial , como un nodo 
 void chack_push(Chack stack, char symbol){
-    if(sizeof((Chack->array)) == Chack->capacity)
+    if(sizeof((Chack-)) == Chack->capacity)
     
 };
 
 //-----------------------------------------------------------------------------------------------------------
 
-/*Ejercicio 3 implementacio*/
+//Ejercicio 3 implementacion
 void push(Stack stack, char symbol) {
     
     Node newNode = (Node) malloc(sizeof(struct strNode));
