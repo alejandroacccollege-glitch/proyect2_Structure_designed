@@ -99,9 +99,18 @@ Bool isBalanced(char filename[])
         siguiente carácter para volver a empezar el while*/ 
     }
     fclose(fileOpened); // Cierra el archivo
-    if (signs -> size == 0) return True; /* Al vaciarse conforme encuantra pares, al final si encuentra 
+    Bool result = False;
+    
+    if (signs -> size == 0){ 
+        result = True;} /* Al vaciarse conforme encuantra pares, al final si encuentra 
     un cierre para cada cada apertura termina el stack vacío, por lo que será verdadero el hecho de
     estar balanceado */
-    return False; /* Caso contrario al anterior, devuelve falso ya que se quedaron aquellas aperturas 
+    else{
+        while (signs->top != NULL){
+            pop(signs);
+        }
+    }
+    free(signs); //Libera el Stack usado para la revisión
+    return result; /* Caso contrario al anterior, devuelve falso ya que se quedaron aquellas aperturas 
     que no encintraron cierre */
 }
