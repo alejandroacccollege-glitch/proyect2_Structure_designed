@@ -3,6 +3,40 @@
 #include "proyect2.h"
 // Ejercicio 1
 
+void createMatrix(char**** matrix, unsigned int** counts, char* words[], int numWords) {
+    
+    *counts = (unsigned int*) calloc(26, sizeof(unsigned int));
+
+    
+    for (int i = 0; i < numWords; i++) {
+        int row = words[i][0] - 'a';
+        (*counts)[row]++;
+    }
+
+    
+    *matrix = (char***) malloc(26 * sizeof(char**));
+
+    
+    for (int i = 0; i < 26; i++) {
+        if ((*counts)[i] > 0) {
+            (*matrix)[i] = (char**) malloc((*counts)[i] * sizeof(char*));
+        } else {
+            (*matrix)[i] = NULL;
+        }
+    }
+
+    
+    int pos[26] = {0};
+
+    
+    for (int i = 0; i < numWords; i++) {
+        int row = words[i][0] - 'a';
+        int col = pos[row];
+        (*matrix)[row][col] = words[i];
+        pos[row]++;
+    }
+}
+
 // Ejercicio 3
 Bool isBalanced(char filename[])
 {
