@@ -49,6 +49,7 @@ int main()
     free(matrix);
     free(counts);
 
+    printf("\n");
     printf("Ejercicio 2\n");
     // Ejercicio 2
     Chack k = chack_create(10);
@@ -62,6 +63,7 @@ int main()
     chack_print(k);
 
     // Ejercicio 3
+    printf("\n");
     printf("Ejercicio 3\n");
     if (isBalanced("TestFileExercise3.txt") == True)
     {
