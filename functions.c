@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "functions.h"
 // Funciones que pueden ser usadas pora otras partes del proyecto (Para el archivo proyect2.c)
-
+//Hola
 void push(Stack stack, char symbol) {
     
     Node newNode = (Node) malloc(sizeof(struct strNode));
