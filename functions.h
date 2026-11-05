@@ -10,7 +10,7 @@ typedef struct strChack* Chack;
 
 //Metodos de la estructura 
 //Seran tipo stack , por lo tanto no ucapos un type para casteo 
-Chack chack_create();
+Chack chack_create(int);
 void chack_push(Chack, char);
 //El push sera con realloc , entonces la diferencia es que no se va a crear un nodo 
 //La diferencia  qes que n tendre que actualizar el top, recuperando el dato en memorua fisica 

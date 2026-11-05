@@ -42,8 +42,8 @@ int main()
     } // Se prueba el ejercicio 3 con el archivo dado
 //------------------------------------------------------------------------
 //Ejercicio 2 
-chack_print(k);
 Chack k = chack_create(10);
+chack_print(k);
 for(char c = 'a'; c <= 'z'; c ++) chack_push(k, c);
 printf("Pop: %c\n", chack_pop(k));
 printf("Top: %c\n", chack_top(k));
