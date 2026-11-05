@@ -1,0 +1,10 @@
+Debera llevar el siguiente formato cada commit:
+Ejemplo:
+"Version 1.0: Muestra de como debe verse"
+
+- Primero va la versión del código del archivo o archivos que se la hace commit 
+(límite de cada décimal de cada versión hasta .5, luego brinca al siguiente entero)
+
+- Luego de los dos puntos se pone lo que se agregó o modificó.
+
+NOTA: Todo el texto debe ser sin acentos para mantener uniformidad
