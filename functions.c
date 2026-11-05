@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "functions.h"
 // Funciones que pueden ser usadas pora otras partes del proyecto (Para el archivo proyect2.c)
 //Hola

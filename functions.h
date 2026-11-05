@@ -6,6 +6,7 @@ además de las cosas que deben ser públicas para el archivo proyect2.c*/
 // Funciones para ejercicio 2 (Chack.h hipoteticamennte )
 //Entonces primeor empiezo definiendo 
 //el apuntador a la estructura tipo struct strstack 
+typedef enum {False, True} Bool;
 typedef struct strChack* Chack; 
 
 //Metodos de la estructura 
@@ -21,7 +22,7 @@ Bool chack_isEmpty(Chack);
 
 void chack_clear(Chack);
 int chack_size(Chack); 
-void chck_print(Chack k); 
+void chack_print(Chack); 
 //Estos metodos son equivalentes , a los trabajados 
 //En los ejercicios o estructuras anteriormente como el stack 
 //Solo que estos no contienen un ndodo 
@@ -40,8 +41,6 @@ struct strStack {
     int size;
 }; // Crea una estructura de lo que tiene un stack
 typedef struct strStack *Stack; // Apunta a la estructura stack para crear Stacks
-
-typedef enum {False, True} Bool;
 void push(Stack, char); // Prototipo de la implementación "push" que esta en (functions.c)
 char pop(Stack); // Prototipo de la implementación "pop" que esta en (functions.c)
 
