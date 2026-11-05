@@ -40,6 +40,16 @@ int main()
     } else {
         printf("False\n");
     } // Se prueba el ejercicio 3 con el archivo dado
+//------------------------------------------------------------------------
+//Ejercicio 2 
+chack_print(k);
+Chack k = chack_create(10);
+for(char c = 'a'; c <= 'z'; c ++) chack_push(k, c);
+printf("Pop: %c\n", chack_pop(k));
+printf("Top: %c\n", chack_top(k));
+chack_print(k);
+chack_clear(k);
+chack_print(k);
     
     return 0;
 }
