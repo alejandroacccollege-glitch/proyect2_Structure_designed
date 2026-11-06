@@ -5,35 +5,36 @@
 
 void createMatrix(char**** matrix, unsigned int** counts, char* words[], int numWords) {
     
-    *counts = (unsigned int*) calloc(26, sizeof(unsigned int));
+    *counts = (unsigned int*) calloc(26, sizeof(unsigned int)); //Creamos contadores para cada fila (26) y todos los inicializamos en 0
 
     
     for (int i = 0; i < numWords; i++) {
         int row = words[i][0] - 'a';
         (*counts)[row]++;
-    }
-
+    } // En el ciclo for , a i le restamos 'a', para saber a que count le vamos a aumentar, si 'b' - 'a' = 1, va a la fila 1 
+    //Despues de saber a que fila ir, el contador de esa fila se le suma.
     
-    *matrix = (char***) malloc(26 * sizeof(char**));
+    
+    *matrix = (char***) malloc(26 * sizeof(char**));  //Creamos 26 apuntadores para cada letra del abecedario ingles.
 
     
     for (int i = 0; i < 26; i++) {
-        if ((*counts)[i] > 0) {
-            (*matrix)[i] = (char**) malloc((*counts)[i] * sizeof(char*));
+        if ((*counts)[i] > 0) { //Si en esa fila el contador es mayor que 0 entramos en este if
+            (*matrix)[i] = (char**) malloc((*counts)[i] * sizeof(char*)); //Reservamos la memoria para poner las palabras
         } else {
-            (*matrix)[i] = NULL;
+            (*matrix)[i] = NULL; // Si contador esta en 0, entonces en ese espacio no apartamos nada ya que no se va a reservar nada.
         }
     }
 
     
-    int pos[26] = {0};
+    int pos[26] = {0};  // Creamos un arreglo auxiliar(todos los lugares inician en 0), nos facilitará poder ver que columna esta vacía 
 
     
-    for (int i = 0; i < numWords; i++) {
-        int row = words[i][0] - 'a';
-        int col = pos[row];
-        (*matrix)[row][col] = words[i];
-        pos[row]++;
+    for (int i = 0; i < numWords; i++) { //Recorre todas las palbras de words
+        int row = words[i][0] - 'a'; //Volvemos a tomar la primera letra de cada palabra para acomodarla
+        int col = pos[row]; // Vemos cual es la siguiente columna disponible para acomodar otra palabra que inicie con la misma letra que otra.
+        (*matrix)[row][col] = words[i]; // Guardamos la palabra en donde debe de ir 
+        pos[row]++; //Nos movemos a la siguiente columna para acomodar las demas palabras donde deben de ir.
     }
 }
 
