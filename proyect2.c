@@ -51,7 +51,7 @@ Bool isBalanced(char filename[])
     signs->top = NULL;
     signs->size = 0; /* De la línea 15 a 17 se crea un Stack para almacenar los símbolos*/ 
 
-
+    Bool balanced = True;
     int currentChar = fgetc(fileOpened); // Lee el carácter actual mientras aún haya
 
     while (!feof(fileOpened)) // Mientras no se escuentre el fin del archivo
@@ -64,7 +64,10 @@ Bool isBalanced(char filename[])
         else if (currentChar == '>' || currentChar == '}' || currentChar == ')' || currentChar == ']')
         { // Cuando se topa con los que cierran los delimitadores procede a lo siguiente:
             if (signs->top == NULL)
-                return False; // Primero, si la pila está vacía devuelve falso ya que no hay con que verificar
+                {
+                balanced = False; // Primero, si la pila está vacía marca falso ya que no hay con que verificar
+                break;
+            } // Primero, si la pila está vacía devuelve falso ya que no hay con que verificar
             
                 char stackChar = signs->top->pairedDelimiter; /* Se revisa el delimitador que se encuentra
                 almacenado en el Stack */
@@ -75,23 +78,23 @@ Bool isBalanced(char filename[])
                 el Stack */
             case '>':
                 if (stackChar != '<')
-                    return False;
-                pop(signs);
+                    balanced = False;
+                else pop(signs);
                 break;
             case '}':
                 if (stackChar != '{')
-                    return False;
-                pop(signs);
+                    balanced = False;
+                else pop(signs);
                 break;
             case ')':
                 if (stackChar != '(')
-                    return False;
-                pop(signs);
+                    balanced = False;
+                else pop(signs);
                 break;
             case ']':
                 if (stackChar != '[')
-                    return False;
-                pop(signs);
+                   balanced = False;
+                else pop(signs);
                 break;
             }
         }
@@ -101,7 +104,7 @@ Bool isBalanced(char filename[])
     fclose(fileOpened); // Cierra el archivo
     Bool result = False;
     
-    if (signs -> size == 0){ 
+    if (balanced == True && signs->size == 0){ 
         result = True;} /* Al vaciarse conforme encuantra pares, al final si encuentra 
     un cierre para cada cada apertura termina el stack vacío, por lo que será verdadero el hecho de
     estar balanceado */

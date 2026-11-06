@@ -6,6 +6,7 @@ int main()
 {
     // Ejercicio 1
     printf("Ejercicio 1\n");
+    printf("Original:\n");
     char ***matrix = NULL;
     unsigned int *counts = NULL;
     char *words[] = {
@@ -27,6 +28,54 @@ int main()
     };
 
     createMatrix(&matrix, &counts, words, 15);
+
+    for (int i = 0; i < 26; i++)
+    {
+        if (counts[i] == 0)
+            continue;
+        for (int j = 0; j < counts[i]; j++)
+        {
+            printf("%s ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    for (int i = 0; i < 26; i++)
+    {
+        if (matrix[i] != NULL)
+        {
+            free(matrix[i]);
+        }
+    }
+    free(matrix);
+    free(counts);
+
+    printf("Extension del original:\n");
+    char *wordsMod[] = {
+        "int",
+        "main",
+        "double",
+        "char",
+        "else",
+        "long",
+        "case",
+        "for",
+        "while",
+        "continue",
+        "if",
+        "float",
+        "do",
+        "break",
+        "switch",
+        "toto",
+        "raziel",
+        "angel",
+        "ayuda",
+        "pesado"
+    };
+    int numWordsMod = sizeof(wordsMod) / sizeof(wordsMod[0]);
+
+    createMatrix(&matrix, &counts, wordsMod, numWordsMod);
 
     for (int i = 0; i < 26; i++)
     {

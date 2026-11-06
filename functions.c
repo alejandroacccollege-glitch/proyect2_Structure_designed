@@ -25,7 +25,7 @@ struct strChack {
 Chack chack_create(int capacity) {
     //No debera tener ningun prior , ya que el push se hace con realloc .
     //Debe ser una capacidad >=3
-    if(capacity <3) return NULL; //  o que tendria que retornar , pido de nuevo el valor
+    if (capacity < 3) capacity = 3;
     //Despues creo el arreglo dinamicamente con malloc
     //El apuntador es el que lo contiene
     Chack chack= (Chack)malloc(sizeof(struct strChack));
