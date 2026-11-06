@@ -65,6 +65,7 @@ int main()
     // Ejercicio 3
     printf("\n");
     printf("Ejercicio 3\n");
+    printf("Is TestFileExercise3.txt balanced?:\n");
     if (isBalanced("TestFileExercise3.txt") == True)
     {
         printf("True\n");
@@ -73,6 +74,25 @@ int main()
     {
         printf("False\n");
     } // Se prueba el ejercicio 3 con el archivo dado
+    
+    printf("Is TestFileExercise3 (2).txt balanced?:\n");
+    if (isBalanced("TestFileExercise3 (2).txt") == True)
+    {
+        printf("True\n");
+    }
+    else
+    {
+        printf("False\n");
+    } // Se prueba el ejercicio 3 con el archivo modificado
 
+    printf("Is TestFileExercise3 (3).txt balanced?:\n");
+    if (isBalanced("TestFileExercise3 (3).txt") == True)
+    {
+        printf("True\n");
+    }
+    else
+    {
+        printf("False\n");
+    } // Se prueba el ejercicio 3 con el archivo modificado
     return 0;
 }
