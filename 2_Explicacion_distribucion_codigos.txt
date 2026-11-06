@@ -1,0 +1,14 @@
+1. functions.c:
+En este archivo van las implementaciones protegidas que se usan en proyect2.c, así como aquellas cuya implementación debe estar oculta del usuario que la usa.
+
+2. functions.h:
+Contiene los headers o prototipos de las funciones cuya implementación está oculta mediante el uso externo de functions.c, además de incluir las definiciones y herramientas que serán publicas para proyect2.c o que pueden ser usadas en Tests.c, tales como el Bool o las estructuras.
+
+3. proyect2.c:
+Posee aquellas funciones que serán usadas en el Tests.c, pero para tener mayor control de su implementación se oculta y se usa a través de proyect.h.
+
+4. proyect2.h:
+Posee aquellos headers o prototipos que usará el Tests.c, esto con el fin de tener mayor control de las funciones y fuera más fácil implementarlas funciones de forma separada sin depender de que se acumulen antes del main, dejando algo más limpio cuando se usan todas las funciones o herramientas en el main. 
+
+5. Tests.c:
+Se hace uso de cada ejercicio implementdado, quedando más limpio al separarlo de las toda implementación que pudiera darse.
