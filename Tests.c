@@ -74,7 +74,7 @@ int main()
     {
         printf("False\n");
     } // Se prueba el ejercicio 3 con el archivo dado
-    
+
     printf("Is TestFileExercise3 (2).txt balanced?:\n");
     if (isBalanced("TestFileExercise3 (2).txt") == True)
     {
@@ -94,5 +94,14 @@ int main()
     {
         printf("False\n");
     } // Se prueba el ejercicio 3 con el archivo modificado
+    // Prueba del Reto 4
+    printf("\n");
+    printf("Ejercicio 4\n");
+    // Prueba del Reto 4
+    Queue q = createTaskQueue("Tasks.dat");
+    int tasks = queue_size(q); // tasks = 12
+    printf("Total de tareas iniciales en la cola: %d\n", tasks);
+    processTaskQueue(q, "Log.txt");
+    queue_destroy(q); // Libera el contenedor de la cola al finalizar
     return 0;
 }

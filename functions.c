@@ -133,3 +133,70 @@ char pop(Stack stack) {
 
     return value;   
 } //Se encarga de devolver datos almacenados en el stack
+//-----------------------------------------------------------------------------------------------------------
+
+//Ejercicio 4 implementacion
+Queue queue_create() {
+    Queue newQueue = (Queue) malloc(sizeof(struct strQueue));
+    if (newQueue == NULL) return NULL;
+    newQueue->front = NULL;
+    newQueue->rear = NULL;
+    newQueue->size = 0;
+    return newQueue;
+} // Se encarga de reservar memoria e inicializar la cola vacía
+
+int queue_size(Queue q) {
+    if (q == NULL) return 0;
+    return q->size;
+} // Devuelve la cantidad de tareas formadas actualmente en la cola
+
+Bool queue_isEmpty(Queue q) {
+    if (q == NULL || q->size == 0) return True;
+    return False;
+} // Verifica si ya no quedan tareas pendientes en la cola
+
+void queue_offer(Queue q, Task t) {
+    if (q == NULL || t == NULL) return;
+
+    QueueNode newNode = (QueueNode) malloc(sizeof(struct strQueueNode));
+    if (newNode == NULL) return;
+    newNode->taskData = t;
+    newNode->next = NULL;
+
+    if (q->rear == NULL) {
+        q->front = newNode;
+        q->rear = newNode;
+    } else {
+        q->rear->next = newNode;
+        q->rear = newNode;
+    }
+    q->size++;
+} // Se encarga de insertar una tarea al final de la cola (orden FIFO)
+
+Task queue_poll(Queue q) {
+    if (queue_isEmpty(q)) {
+        return NULL;
+    }
+
+    QueueNode temp = q->front;
+    Task extractedTask = temp->taskData;
+
+    q->front = temp->next;
+    if (q->front == NULL) {
+        q->rear = NULL;
+    }
+
+    free(temp);
+    q->size--;
+
+    return extractedTask;
+} // Se encarga de extraer y devolver la tarea ubicada al frente de la cola
+
+void queue_destroy(Queue q) {
+    if (q == NULL) return;
+    while (!queue_isEmpty(q)) {
+        Task tempTask = queue_poll(q);
+        free(tempTask);
+    }
+    free(q);
+} // Se encarga de liberar todos los nodos y la estructura de la cola
