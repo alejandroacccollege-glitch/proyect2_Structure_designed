@@ -1,45 +1,156 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "proyect2.h"
 
 int main()
 {
-    //Ejercicio 1
-
-    char*** matrix = NULL;
-    unsigned int* counts = NULL;
-    char* words[] = {
-        "int", "main", "double", "char", "else",
-        "long", "case", "for", "while", "continue",
-        "if", "float", "do", "break", "switch",
+    // Ejercicio 1
+    printf("Ejercicio 1\n");
+    printf("Original:\n");
+    char ***matrix = NULL;
+    unsigned int *counts = NULL;
+    char *words[] = {
+        "int",
+        "main",
+        "double",
+        "char",
+        "else",
+        "long",
+        "case",
+        "for",
+        "while",
+        "continue",
+        "if",
+        "float",
+        "do",
+        "break",
+        "switch",
     };
 
-    
     createMatrix(&matrix, &counts, words, 15);
 
-    
-    for (int i = 0; i < 26; i++) {
-        if (counts[i] == 0) continue;
-        for (int j = 0; j < counts[i]; j++) {
+    for (int i = 0; i < 26; i++)
+    {
+        if (counts[i] == 0)
+            continue;
+        for (int j = 0; j < counts[i]; j++)
+        {
             printf("%s ", matrix[i][j]);
         }
         printf("\n");
     }
 
-    
-    for (int i = 0; i < 26; i++) {
-        if (matrix[i] != NULL) {
-            free(matrix[i]); 
+    for (int i = 0; i < 26; i++)
+    {
+        if (matrix[i] != NULL)
+        {
+            free(matrix[i]);
         }
     }
-    free(matrix);  
-    free(counts);  
-    
-    //Ejercicio 3
-    if (isBalanced("TestFileExercise3.txt") == True) {
+    free(matrix);
+    free(counts);
+
+    printf("Extension del original:\n");
+    char *wordsMod[] = {
+        "int",
+        "main",
+        "double",
+        "char",
+        "else",
+        "long",
+        "case",
+        "for",
+        "while",
+        "continue",
+        "if",
+        "float",
+        "do",
+        "break",
+        "switch",
+        "toto",
+        "raziel",
+        "angel",
+        "ayuda",
+        "pesado"
+    };
+    int numWordsMod = sizeof(wordsMod) / sizeof(wordsMod[0]);
+
+    createMatrix(&matrix, &counts, wordsMod, numWordsMod);
+
+    for (int i = 0; i < 26; i++)
+    {
+        if (counts[i] == 0)
+            continue;
+        for (int j = 0; j < counts[i]; j++)
+        {
+            printf("%s ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    for (int i = 0; i < 26; i++)
+    {
+        if (matrix[i] != NULL)
+        {
+            free(matrix[i]);
+        }
+    }
+    free(matrix);
+    free(counts);
+
+    printf("\n");
+    printf("Ejercicio 2\n");
+    // Ejercicio 2
+    Chack k = chack_create(10);
+    chack_print(k);
+    for (char c = 'a'; c <= 'z'; c++)
+        chack_push(k, c);
+    printf("Pop: %c\n", chack_pop(k));
+    printf("Top: %c\n", chack_top(k));
+    chack_print(k);
+    chack_clear(k);
+    chack_print(k);
+
+    // Ejercicio 3
+    printf("\n");
+    printf("Ejercicio 3\n");
+    printf("Is TestFileExercise3.txt balanced?:\n");
+    if (isBalanced("TestFileExercise3.txt") == True)
+    {
         printf("True\n");
-    } else {
+    }
+    else
+    {
         printf("False\n");
     } // Se prueba el ejercicio 3 con el archivo dado
-    
+
+    printf("Is TestFileExercise3 (2).txt balanced?:\n");
+    if (isBalanced("TestFileExercise3 (2).txt") == True)
+    {
+        printf("True\n");
+    }
+    else
+    {
+        printf("False\n");
+    } // Se prueba el ejercicio 3 con el archivo modificado
+
+    printf("Is TestFileExercise3 (3).txt balanced?:\n");
+    if (isBalanced("TestFileExercise3 (3).txt") == True)
+    {
+        printf("True\n");
+    }
+    else
+    {
+        printf("False\n");
+    } // Se prueba el ejercicio 3 con el archivo modificado
+    // Prueba del Reto 4
+    printf("\n");
+    printf("Ejercicio 4\n");
+    // Prueba del Reto 4
+    Queue q = createTaskQueue("Tasks.dat");
+    int tasks = queue_size(q); // tasks = 12
+    printf("Total de tareas iniciales en la cola: %d\n", tasks);
+    processTaskQueue(q, "Log.txt");
+    queue_destroy(q); // Libera el contenedor de la cola al finalizar
     return 0;
 }
